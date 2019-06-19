@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: queue.log.messages #\u8981\u548Coutput\u7684destination\u4E00\u81F4, \u8FD9\u6837\u624D\u80FD\u5C06\u961F\u5217\u548C\u5199\u5165\u6D88\u606F\u7684exchange\u5173\u8054\u8D77\u6765
+          #          binder: local_rabbit
+          group: logMessageConsumers
+        output:
+          destination: queue.log.messages
+#          binder: local_rabbit
+#      binders:
+#        local_rabbit:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: localhost
+#                port: 5672
+#                username: guest
+#                password: guest
+#                virtual-host: /

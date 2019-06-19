@@ -1,0 +1,43 @@
+package cn.lee.stream.web;
+
+import cn.lee.stream.config.RabbitChannel;
+import cn.lee.stream.po.Person;
+import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @author : Lee
+ * @date : 2019/6/19
+ */
+@RestController
+@RequiredArgsConstructor
+public class MessageController {
+
+    private final RabbitChannel rabbitChannel;
+    private final Source source;
+    private final Processor pipe;
+
+    @GetMapping("/source/{message}")
+    public String source(@PathVariable("message") String message) throws Exception {
+        Person person = new Person(message);
+        source.output().send(MessageBuilder.withPayload(person).build());
+        return "success";
+    }
+
+    @GetMapping("/send")
+    public void send(@RequestParam String message) {
+        pipe.output().send(MessageBuilder.withPayload(message).build());
+    }
+
+    @GetMapping("/rabbit/{message}")
+    public String sendRabbit(@PathVariable("message") String message) throws Exception {
+        rabbitChannel.output().send(MessageBuilder.withPayload(message).build());
+        return "success";
+    }
+}

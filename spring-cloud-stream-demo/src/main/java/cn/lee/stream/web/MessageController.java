@@ -23,6 +23,7 @@ public class MessageController {
     private final Source source;
     private final Processor pipe;
 
+
     @GetMapping("/source/{message}")
     public String source(@PathVariable("message") String message) throws Exception {
         Person person = new Person(message);
@@ -32,6 +33,11 @@ public class MessageController {
 
     @GetMapping("/send")
     public void send(@RequestParam String message) {
+        pipe.output().send(MessageBuilder.withPayload(message).build());
+    }
+
+    @GetMapping("/test")
+    public void test(@RequestParam String message) {
         pipe.output().send(MessageBuilder.withPayload(message).build());
     }
 

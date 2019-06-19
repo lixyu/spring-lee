@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface RabbitChannel {
-    String OUTPUT = "test-sender";
-    String INPUT = "test-sender1";
+    String OUTPUT = "test-output";
+    String INPUT = "test-input";
 
     @Output(OUTPUT)
     MessageChannel output() throws Exception;

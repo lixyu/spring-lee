@@ -4,19 +4,19 @@ spring:
   cloud:
     stream:
       bindings:
-        input: #stream\u9ED8\u8BA4input
-          destination: queue.log.messages #\u8981\u548Coutput\u7684destination\u4E00\u81F4, \u8FD9\u6837\u624D\u80FD\u5C06\u961F\u5217\u548C\u5199\u5165\u6D88\u606F\u7684exchange\u5173\u8054\u8D77\u6765
+        input: #stream默认input
+          destination: queue.log.messages #队列必需与对应的output的destination一致
           binder: local_rabbit
           group: logMessageConsumers
-        output: #stream\u9ED8\u8BA4output
+        output: #stream默认output
           destination: queue.log.messages
           binder: local_rabbit
-        test-input: #\u81EA\u5B9A\u4E49\u8F93\u5165
-          destination: queue.test1 #\u6D88\u606F\u961F\u5217\u540D\u79F0,\u8981\u4E0E\u5BF9\u79F0output\u7684destination\u4FDD\u6301\u4E00\u81F4
+        test-input: #自定义消费者,与xxxxChannel中的input相同
+          destination: queue.test1 #queue,与对应的output的destination的queue相同
           binder: 142_rabbit
           group: lee
-        test-output: #\u81EA\u5B9A\u4E49\u8F93\u51FA
-          destination: queue.test1
+        test-output: #自定义生产者,与xxxxChannel中的output相同
+          destination: queue.test1 #queue
           binder: 142_rabbit
       binders:
         local_rabbit:

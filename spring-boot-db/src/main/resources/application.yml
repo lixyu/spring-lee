@@ -1,0 +1,55 @@
+server:
+  port: 8082
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  data:
+    mongodb:
+      host: 10.138.60.142
+      port: 27017
+      username: vcredit
+      password: vcredit
+      authentication-database: admin
+      database: test
+  datasource:
+    druid:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+      url: jdbc:mysql://10.138.60.142:3306/test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      max-active: 20
+      initial-size: 10
+      max-wait: 60000
+      min-idle: 10
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=200
+      useGlobalDataSourceStat: true
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      validation-query: SELECT 1
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  typeAliasesPackage: cn.lee.db.model
+  global-config:
+    db-config:
+      id-type: ID_WORKER #\u9ED8\u8BA4id_work(\u57FA\u4E8E\u96EA\u82B1\u7B97\u6CD5),\u81EA\u589E\u957Fauto
+      field-strategy: not_empty
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    jdbc-type-for-null: null

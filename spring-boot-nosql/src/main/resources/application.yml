@@ -1,2 +1,11 @@
 server:
-  port: 9091
+  port: 9090
+
+spring:
+  redis:
+    host: 10.139.60.87
+    port: 6379
+
+
+
+

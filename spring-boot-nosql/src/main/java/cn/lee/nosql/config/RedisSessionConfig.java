@@ -1,5 +1,8 @@
 package cn.lee.nosql.config;
 
+import cn.lee.nosql.interceptor.CacheKeyGenerator;
+import cn.lee.nosql.interceptor.LockKeyGenerator;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
@@ -10,4 +13,9 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @Configuration
 @EnableRedisHttpSession
 public class RedisSessionConfig {
+
+    @Bean
+    public CacheKeyGenerator cacheKeyGenerator() {
+        return new LockKeyGenerator();
+    }
 }

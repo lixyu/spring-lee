@@ -5,7 +5,14 @@ spring:
   redis:
     host: 10.139.60.87
     port: 6379
-
+  data:
+    mongodb:
+      host: 10.138.60.142
+      username: vcredit
+      password: vcredit
+      authentication-database: admin
+      database: test
+    
 
 
 

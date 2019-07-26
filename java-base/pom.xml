@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cn.lee</groupId>
-	<artifactId>java8</artifactId>
+	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java8</name>
+	<name>java-base</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

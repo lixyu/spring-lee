@@ -1,7 +1,7 @@
 package cn.lee.stream.web;
 
-import cn.lee.stream.config.RabbitChannel;
-import cn.lee.stream.po.Person;
+import cn.lee.stream.mq.Person;
+import cn.lee.stream.mq.RabbitChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.messaging.Source;
@@ -21,7 +21,7 @@ public class MessageController {
 
     private final RabbitChannel rabbitChannel;
     private final Source source;
-    private final Processor pipe;
+    private final Processor processor;
 
 
     @GetMapping("/source/{message}")
@@ -33,12 +33,12 @@ public class MessageController {
 
     @GetMapping("/send")
     public void send(@RequestParam String message) {
-        pipe.output().send(MessageBuilder.withPayload(message).build());
+        processor.output().send(MessageBuilder.withPayload(message).build());
     }
 
     @GetMapping("/test")
     public void test(@RequestParam String message) {
-        pipe.output().send(MessageBuilder.withPayload(message).build());
+        processor.output().send(MessageBuilder.withPayload(message).build());
     }
 
     @GetMapping("/rabbit/{message}")

@@ -1,4 +1,4 @@
-package cn.lee.stream.po;
+package cn.lee.stream.mq;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

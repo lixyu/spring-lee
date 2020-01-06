@@ -1,4 +1,4 @@
-package cn.lee.stream.config;
+package cn.lee.stream.mq;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
@@ -7,8 +7,8 @@ import org.springframework.messaging.SubscribableChannel;
 import org.springframework.stereotype.Component;
 
 /**
- * @author : Lee
- * @date : 2019/6/19
+ * @author Lee
+ * @date 2019-10-11 15:22
  */
 @Component
 public interface RabbitChannel {

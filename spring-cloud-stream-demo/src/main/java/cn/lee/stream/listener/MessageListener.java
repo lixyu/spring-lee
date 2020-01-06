@@ -1,6 +1,6 @@
 package cn.lee.stream.listener;
 
-import cn.lee.stream.config.RabbitChannel;
+import cn.lee.stream.mq.RabbitChannel;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Component;

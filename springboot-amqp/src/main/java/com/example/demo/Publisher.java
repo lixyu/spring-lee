@@ -24,4 +24,13 @@ public class Publisher {
             e.printStackTrace();
         }
     }
+
+    public void sendTest(String message) {
+        try {
+            rabbitTemplate.convertAndSend(AmqpConfig.LIND_FANOUT_EXCHANGE, "",message);
+            log.info("message:"+message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

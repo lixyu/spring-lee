@@ -21,6 +21,8 @@ public class AmqpConfig {
     public static final String LIND_DEAD_QUEUE = "lind.queue.dead";
 
     public static final String LIND_FANOUT_EXCHANGE = "lindFanoutExchange";
+
+    public static final String TEST_QUEUE = "test-queue";
     /**
      * 单位为微秒.
      */
@@ -95,5 +97,14 @@ public class AmqpConfig {
     @Bean
     public FanoutExchange fanoutExchange() {
         return new FanoutExchange(LIND_FANOUT_EXCHANGE);
+    }
+
+    @Bean
+    public Queue testQueue(){
+        return  new Queue(TEST_QUEUE);
+    }
+    @Bean
+    public Binding bindingMobileAuthExchange(Queue testQueue, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(testQueue).to(fanoutExchange);
     }
 }

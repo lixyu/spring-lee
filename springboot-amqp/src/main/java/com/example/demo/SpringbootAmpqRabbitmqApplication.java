@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @RestController
 @SpringBootApplication
@@ -23,6 +25,15 @@ public class SpringbootAmpqRabbitmqApplication {
 	@GetMapping("/send/{message}")
 	public String send(@PathVariable("message") String message){
 		publisher.publish(message);
+		return "SUCCESS";
+	}
+
+	@GetMapping("/test/{count}")
+	public String test(@PathVariable Integer count){
+		for (int i=0;i<count;i++){
+			publisher.sendTest(UUID.randomUUID().toString());
+		}
+
 		return "SUCCESS";
 	}
 

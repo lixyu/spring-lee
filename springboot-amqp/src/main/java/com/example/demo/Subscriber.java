@@ -21,7 +21,7 @@ public class Subscriber {
     public void customerSign(String data) {
         try {
 
-            log.info("从队列拿到数据 ：{}", data);
+            log.info("从队列拿到数据:{}", data);
 
         } catch (Exception ex) {
             ex.printStackTrace();

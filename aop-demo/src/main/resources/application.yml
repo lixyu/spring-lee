@@ -1,0 +1,5 @@
+server:
+  port: 8279
+spring:
+  aop:
+    auto: true

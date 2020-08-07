@@ -2,16 +2,11 @@ package cn.lee.nosql.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.QueryTimeoutException;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,13 +40,13 @@ public class RedisDelayQueue {
 
         if (topicList != null) {
 
-            topicList.forEach(this::registTopic);
+            topicList.forEach(this::registerTopic);
 
         }
 
     }
 
-    private void registTopic(String topic) {
+    private void registerTopic(String topic) {
 
         log.info("注册监听topic消息:{}", topic);
 
@@ -65,7 +60,7 @@ public class RedisDelayQueue {
 
 //删除结果大于0代表 抢到了
 
-                if( remove != null && remove> 0 ){
+                if (remove != null && remove > 0) {
 
                     stringRedisTemplate.opsForList().leftPushAll(topic + "queue", msgs);
 
@@ -85,7 +80,7 @@ public class RedisDelayQueue {
 
         if (addSuccess != null && addSuccess > 0) {
 
-            registTopic(topic);
+            registerTopic(topic);
 
         }
 
@@ -104,7 +99,6 @@ public class RedisDelayQueue {
         consumeTopics.add(topic);
 
         int consumerPoolSize = 10;
-
         ExecutorService consumerPool = Executors.newFixedThreadPool(consumerPoolSize);
 
         for (int i = 0; i < consumerPoolSize; i++) {

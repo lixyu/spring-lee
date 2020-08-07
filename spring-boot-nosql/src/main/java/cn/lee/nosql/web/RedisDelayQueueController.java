@@ -41,25 +41,17 @@ public class RedisDelayQueueController {
     public void consumer() throws InterruptedException {
 
         redisDelayQueue.consumer("topic0", (msg)->{
-
             log.info("topic【{}】收到消息：{}","topic0",msg);
-
             return true;
-
-        }); redisDelayQueue.consumer("topic1", (msg)->{
-
+        });
+        redisDelayQueue.consumer("topic1", (msg)->{
             log.info("topic【{}】收到消息：{}","topic1",msg);
-
             return true;
-
         });
 
         redisDelayQueue.consumer("topic2", (msg) -> {
-
             log.info("topic【{}】收到消息：{}", "topic2", msg);
-
             return true;
-
         });
 
         TimeUnit.MINUTES.sleep(10);

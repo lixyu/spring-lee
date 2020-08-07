@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,12 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
 @SpringBootApplication
 public class SpringbootAmpqRabbitmqApplication {
 
 	private final Publisher publisher;
+	private final DelayedSender delayedSender;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootAmpqRabbitmqApplication.class, args);
@@ -25,6 +25,12 @@ public class SpringbootAmpqRabbitmqApplication {
 	@GetMapping("/send/{message}")
 	public String send(@PathVariable("message") String message){
 		publisher.publish(message);
+		return "SUCCESS";
+	}
+
+	@GetMapping("/send2/{message}")
+	public String send2(@PathVariable("message") String message){
+		delayedSender.send(message);
 		return "SUCCESS";
 	}
 

@@ -46,4 +46,12 @@ public class MessageController {
         rabbitChannel.output().send(MessageBuilder.withPayload(message).build());
         return "success";
     }
+
+    @GetMapping("/stream/delay/{message}")
+    public String streamDelay(@PathVariable("message") String message) throws Exception {
+        //延时10s
+        rabbitChannel.delayOutput().send(MessageBuilder.withPayload(message).setHeader("x-delay",10000).build());
+
+        return "success";
+    }
 }

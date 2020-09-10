@@ -11,6 +11,22 @@ spring:
         output: #stream默认output
           destination: queue.log.messages
           binder: local_rabbit
+        test3-output: #自定义生产者,与xxxxChannel中的output相同
+          destination: queue.log.messages
+          binder: local_rabbit
+        test3-input: #自定义消费者
+          destination: queue.log.messages
+          binder: local_rabbit
+        delay-output: #stream延时发送
+          destination: delay.messages
+          binder: local_rabbit
+          producer:
+            delayed-exchange: true
+        delay-input: #stream延时消费
+          destination: delay.messages
+          binder: local_rabbit
+          consumer:
+            delayed-exchange: true
         test-input: #自定义消费者,与xxxxChannel中的input相同
           destination: queue.test1 #queue,与对应的output的destination的queue相同
           binder: 142_rabbit
@@ -34,9 +50,16 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: 10.138.60.142
-                port: 5672
+                host: 10.138.61.184
+                port: 5600
                 username: admin
-                password: 123456
+                password: admin
                 virtual-host: /
-
+      rabbit:
+        bindings:
+          delay-output: #stream延时发送
+            producer:
+              delayed-exchange: true
+          delay-input: #stream延时消费
+            consumer:
+              delayed-exchange: true

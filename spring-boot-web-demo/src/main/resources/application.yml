@@ -3,3 +3,7 @@ spring:
     encoding:
       charset: utf-8
       force: true
+mica:
+  log:
+    request:
+      level: body

@@ -63,7 +63,10 @@
 			<groupId>net.dreamlu</groupId>
 			<artifactId>mica-core</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>net.dreamlu</groupId>
+			<artifactId>mica-boot</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>io.zipkin.brave</groupId>
 			<artifactId>brave</artifactId>

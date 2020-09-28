@@ -43,7 +43,7 @@ public class BufferingClientHttpResponseWrapper implements ClientHttpResponse {
     private byte[] body;
 
 
-    BufferingClientHttpResponseWrapper(ClientHttpResponse response) {
+    public BufferingClientHttpResponseWrapper(ClientHttpResponse response) {
         this.response = response;
     }
 

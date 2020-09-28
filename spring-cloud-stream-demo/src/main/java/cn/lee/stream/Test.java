@@ -1,6 +1,7 @@
 package cn.lee.stream;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 
 /**
  * @author : Lee
@@ -14,5 +15,7 @@ public class Test {
         BigDecimal.ZERO.equals(null);
         BigDecimal dd = null;
         dd.equals(BigDecimal.ZERO);
+        StringBuffer sb=new StringBuffer("");
+        Collections.reverse();
     }
 }

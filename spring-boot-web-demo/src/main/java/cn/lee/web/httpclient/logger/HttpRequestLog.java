@@ -2,8 +2,6 @@ package cn.lee.web.httpclient.logger;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
@@ -12,10 +10,10 @@ import java.time.LocalDateTime;
  */
 @Data
 @NoArgsConstructor
-@Document(collection = "http_request_log")
+//@Document(collection = "http_request_log")
 public class HttpRequestLog {
 
-    @Id
+    //@Id
     private String requestId;
 
     private String traceId;

@@ -7,3 +7,5 @@ mica:
   log:
     request:
       level: body
+  jackson:
+    null-to-empty: true

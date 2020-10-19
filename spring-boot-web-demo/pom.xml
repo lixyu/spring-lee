@@ -82,7 +82,17 @@
 			<artifactId>okhttp</artifactId>
 			<version>3.14.2</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>com.github.isrsal</groupId>
+			<artifactId>spring-mvc-logger</artifactId>
+            <version>0.2</version>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.37</version>
+        </dependency>
+    </dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

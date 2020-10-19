@@ -1,5 +1,6 @@
 package cn.lee.web.controller;
 
+import cn.lee.web.input.DataDefaultValue;
 import cn.lee.web.input.VerificationInput;
 import cn.lee.web.util.HttpRequestUtils;
 import com.alibaba.fastjson.JSON;
@@ -24,7 +25,8 @@ public class InputController {
     @PostMapping("/check/input")
     public R<Object> checkInput(@RequestBody @Valid VerificationInput input){
         log.info(JSON.toJSONString(input));
-        return  R.success();
+        DataDefaultValue value=new DataDefaultValue();
+        return  R.success(value);
     }
 
     @GetMapping("/test/http/{what}")
@@ -32,11 +34,14 @@ public class InputController {
         String url="http://localhost:8080/test/response/"+what;
         String result=httpRequestUtils.doGet(url,10);
         log.info("url:{},output param:{}",url,result);
-        return R.success();
+        DataDefaultValue value=new DataDefaultValue();
+        return R.success(value);
     }
     @GetMapping("/test/response/{param}")
     public R<?> testResponse(@PathVariable String param){
 
         return R.success(param);
     }
+
+
 }

@@ -20,4 +20,5 @@ public class VerificationInput {
 
     @Valid
     private InnerObj obj;
+
 }
